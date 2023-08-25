@@ -35,8 +35,6 @@ Users should be able to:
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
-## My process
-
 ### Built with
 
 - Semantic HTML5 markup
@@ -55,15 +53,74 @@ Users should be able to:
 - I got a better understanding on how to use the css ( position relative and absolute)
 
 ```css
-.proud-of-this-css {
-  color: papayawhip;
+.ip-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 25px;
+  position: relative;
+  z-index: 99;
+  top: 15%;
+  /* max-width: auto; */
+  width: 858px;
+  min-height: 150px;
+  background-color: white;
+  color: var(---VeryDarkGray--);
+  border-radius: 15px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+/* MAPBOX MAPS */
+#map {
+  position: absolute;
+  top: 39%;
+  bottom: 0;
+  width: 100%;
 }
 ```
 
 ```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
+//CALLING THE API to get the location of the user
+const userIP = async function (inp) {
+  try {
+    //FUNCTION TO SHOW THE RESULT OF THE INPUTED IP ADDRESS
+    const ip = await fetch(
+      `https://geo.ipify.org/api/v2/country,city,vpn?apiKey=at_d7PHraagdYPV9IlJEOm1wmQx4gTkQ&ipAddress=${inp}`
+    );
+    const data = await ip.json();
+
+    //getting the current ip address of the user
+    console.log(data);
+    const myIp = data.ip;
+    const location = data.location.region;
+    const timezone = data.location.timezone;
+    const isp = data.isp;
+
+    //setting my ip address to show on load
+    IpAddress.value = myIp;
+    IpResult.innerHTML = myIp;
+    IpLocation.innerHTML = location;
+    IpTimezone.innerHTML = timezone;
+    IpNetwork.innerHTML = isp;
+  } catch (error) {
+    console.error(error.message);
+  }
 };
+
+//TO SHOW THE IP ADDRESS ON LOAD
+window.addEventListener("load", function () {
+  userIP("");
+});
+
+//BUTTON EVENT LISTENER TO SHOW EVERYTHING
+arrowBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  //calling the api to get the location of the inserted ip address
+  userIP(IpAddress.value);
+});
 ```
 
 ## Author
