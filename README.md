@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0/hub?share=true]
-- Live Site URL: [https://ip-address-tracker-five-theta.vercel.app/]
+- Solution URL: [https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0/hub?share=true](Solution)
+- Live Site URL: [https://ip-address-tracker-five-theta.vercel.app/](LiveSite)
 
 ### Built with
 
