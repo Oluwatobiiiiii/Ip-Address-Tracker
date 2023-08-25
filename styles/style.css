@@ -80,7 +80,8 @@ body {
 }
 
 .inputs {
-  margin: 5rem 0 1rem 0;
+  margin: 0rem 0 2rem 0;
+  position: absolute;
 }
 
 .inputs > h1 {
@@ -94,20 +95,21 @@ body {
 .ip-info {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   align-content: center;
   gap: 25px;
   position: relative;
   z-index: 99;
-  top: 15%;
+  top: 50%;
   /* max-width: auto; */
-  width: 858px;
-  min-height: 150px;
+  /* width: 858px; */
+  height: 150px;
   background-color: white;
   color: var(---VeryDarkGray--);
   border-radius: 15px;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+  padding-bottom: 3rem;
+  padding-top: 3rem;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
@@ -196,6 +198,8 @@ body {
   font-weight: var(--fontWeight2--);
 }
 
+/* MAPBOX */
+
 #map {
   position: absolute;
   top: 39%;
@@ -221,4 +225,51 @@ a.mapboxgl-ctrl-logo {
 
 .mapboxgl-ctrl-attrib-inner {
   display: none;
+}
+
+/* MEDIA RESPONSIVITY */
+@media screen and (max-width: 860px) {
+  .inputs {
+    position: absolute;
+    margin-bottom: 5rem;
+  }
+
+  .ip-info {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 400px;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    padding-top: 0.3rem;
+    top: 90%;
+  }
+
+  .inputed-address {
+    border: none;
+    font-size: 10px;
+    gap: 10px;
+  }
+
+  .location {
+    border: none;
+    font-size: 10px;
+    gap: 10px;
+  }
+  .timezone {
+    border: none;
+    font-size: 10px;
+    gap: 10px;
+  }
+  .isp {
+    border: none;
+    font-size: 10px;
+    gap: 10px;
+  }
+
+  #map {
+    top: 39%;
+    bottom: 0;
+  }
 }

@@ -62,8 +62,8 @@ Users should be able to:
   position: relative;
   z-index: 99;
   top: 15%;
-  /* max-width: auto; */
-  width: 858px;
+  max-width: auto;
+  /* width: 858px; */
   min-height: 150px;
   background-color: white;
   color: var(---VeryDarkGray--);
