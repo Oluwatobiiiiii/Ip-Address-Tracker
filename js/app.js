@@ -17,46 +17,71 @@ const validateInputs = function (inputed) {
   }
 };
 
-//CALLING THE API to get the location of the user
+//CALLING THE API to get the location of the user https://geo.ipify.org/api/v2/country?apiKey=at_d7PHraagdYPV9IlJEOm1wmQx4gTkQ&ipAddress=8.8.8.8
 const userIP = async function (inp) {
-  //FUNCTION TO SHOW THE RESULT OF THE INPUTED IP ADDRESS
-  const ip = await fetch(
-    `https://geo.ipify.org/api/v2/country,city,vpn?apiKey=at_d7PHraagdYPV9IlJEOm1wmQx4gTkQ&ipAddress=${inp}`
-  );
-  const data = await ip.json();
+  try {
+    //FUNCTION TO SHOW THE RESULT OF THE INPUTED IP ADDRESS
+    const ip = await fetch(
+      `https://geo.ipify.org/api/v2/country,city,vpn?apiKey=at_d7PHraagdYPV9IlJEOm1wmQx4gTkQ&ipAddress=${inp}`
+    );
+    const data = await ip.json();
 
-  //getting the current ip address of the user
-  console.log(data);
-  const myIp = data.ip;
-  const location = data.location.region;
-  const timezone = data.location.timezone;
-  const isp = data.isp;
+    //getting the current ip address of the user
+    console.log(data);
+    const myIp = data.ip;
+    const location = data.location.region;
+    const timezone = data.location.timezone;
+    const isp = data.isp;
 
-  //setting my ip address to show on load
-  IpAddress.value = myIp;
-  IpResult.innerHTML = myIp;
-  IpLocation.innerHTML = location;
-  IpTimezone.innerHTML = timezone;
-  IpNetwork.innerHTML = isp;
+    //setting my ip address to show on load
+    IpAddress.value = myIp;
+    IpResult.innerHTML = myIp;
+    IpLocation.innerHTML = location;
+    IpTimezone.innerHTML = timezone;
+    IpNetwork.innerHTML = isp;
 
-  // FUNCTION TO SHOW THE LOCATION ON THE MAP
+    // FUNCTION TO SHOW THE LOCATION ON THE MAP
 
-  const { lat, lng } = data.location;
-  console.log(lat, lng);
-  mapboxgl.accessToken =
-    "pk.eyJ1IjoiY29kaW5nbmluamEiLCJhIjoiY2xscHRwb2g0MDhhajNsbDBua2o2MGc1aiJ9.5UJt0BwVEq8SsGV9ExOVyw";
-  const map = new mapboxgl.Map({
-    container: "map", // container ID
-    style: "mapbox://styles/mapbox/streets-v12", // style URL
-    center: [lng, lat], // starting position [lng, lat]
-    zoom: 15, // starting zoom
-  });
+    const { lat, lng } = data.location;
+    console.log(lat, lng);
+    mapboxgl.accessToken =
+      "pk.eyJ1IjoiY29kaW5nbmluamEiLCJhIjoiY2xscHRwb2g0MDhhajNsbDBua2o2MGc1aiJ9.5UJt0BwVEq8SsGV9ExOVyw";
+    const map = new mapboxgl.Map({
+      container: "map", // container ID
+      style: "mapbox://styles/mapbox/streets-v12", // style URL
+      center: [lng, lat], // starting position [lng, lat]
+      zoom: 15, // starting zoom
+    });
 
-  // POP UP BOX
-  const popup = new mapboxgl.Popup({ closeOnClick: false })
-    .setLngLat([lng, lat])
-    .setHTML("<h1>You are here.👀</h1>")
-    .addTo(map);
+    const geojson = {
+      type: "FeatureCollection",
+      features: [
+        {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [lng, lat],
+          },
+        },
+      ],
+    };
+    for (const feature of geojson.features) {
+      // create a HTML element for each feature
+      const el = document.createElement("div");
+      el.className = "marker";
+
+      // make a marker for each feature and add to the map
+      new mapboxgl.Marker(el)
+        .setLngLat(feature.geometry.coordinates)
+        .addTo(map);
+    }
+
+    // POP UP BOX
+    // const popup = new mapboxgl.Popup({ closeOnClick: false })
+    //   .setLngLat([lng, lat])
+    //   .setHTML(`<img src="../images/icon-location.svg" alt="">`)
+    //   .addTo(map);  //FUNCTION TO SHOW THE RESULT OF THE INPUTED IP ADDRESS
+  } catch (error) {}
 };
 
 //TO SHOW THE IP ADDRESS ON LOAD

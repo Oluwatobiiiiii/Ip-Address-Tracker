@@ -80,7 +80,7 @@ body {
 }
 
 .inputs {
-  margin: 1rem 0 1rem 0;
+  margin: 5rem 0 1rem 0;
 }
 
 .inputs > h1 {
@@ -94,26 +94,26 @@ body {
 .ip-info {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-items: center;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  align-content: center;
   gap: 25px;
   position: relative;
-  z-index: 1;
-  top: 20%;
-  max-width: 100%;
-  /* width: 750px; */
-  height: 150px;
+  z-index: 99;
+  top: 15%;
+  /* max-width: auto; */
+  width: 858px;
+  min-height: 150px;
   background-color: white;
   color: var(---VeryDarkGray--);
   border-radius: 15px;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .inputed-address {
   padding-right: 1rem;
-  border-right: 1px solid var(---DarkGray--);
+  border-right: 1px solid #969696;
   display: flex;
   flex-direction: column;
   padding-bottom: 1rem;
@@ -142,7 +142,10 @@ body {
   display: flex;
   flex-direction: column;
   padding-bottom: 1rem;
-  gap: var(--gapSize--);
+  /* gap: var(--gapSize--); */
+  inline-size: 300px;
+  height: 75px;
+  /* max-width: 300px; */
 }
 
 /* THE RESULT HEADER */
@@ -156,19 +159,19 @@ body {
 .location > p {
   color: var(---DarkGray--);
   font-size: 15px;
-  color: var(---DarkGray--);
+  font-weight: var(--fontWeight1--);
 }
 
 .timezone > p {
   color: var(---DarkGray--);
   font-size: 15px;
-  color: var(---DarkGray--);
+  font-weight: var(--fontWeight1--);
 }
 
 .isp > p {
   color: var(---DarkGray--);
   font-size: 15px;
-  color: var(---DarkGray--);
+  font-weight: var(--fontWeight1--);
 }
 
 /* THE RETURENED RESULT  */
@@ -198,4 +201,24 @@ body {
   top: 39%;
   bottom: 0;
   width: 100%;
+}
+
+.marker {
+  background-image: url("../images/icon-location.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* background-size: cover; */
+  width: 60px;
+  height: 60px;
+  /* border-radius: 50%; */
+  cursor: pointer;
+}
+
+/* THE WATERMARKS */
+a.mapboxgl-ctrl-logo {
+  display: none;
+}
+
+.mapboxgl-ctrl-attrib-inner {
+  display: none;
 }
