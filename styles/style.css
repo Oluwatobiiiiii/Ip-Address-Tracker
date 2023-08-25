@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  ---VeryDarkGray--: hsl(0, 0%, 17%);
+  ---DarkGray--: hsl(0, 0%, 59%);
+  --gapSize--: 15px;
+  --fontSize--: 18px;
+  --fontWeight1--: 400;
+  --fontWeight2--: 500;
+  --fontWeight3--: 700;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+}
+
+/* THE IP ADDRESS INPUT */
+
+#ip {
+  margin-bottom: 1rem;
+}
+
+.ip-inputs {
+  width: 100%;
+  height: 250px;
+  background-image: url(../images/pattern-bg-desktop.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+/* THE ARROW BUTTON */
+
+.buttonIn {
+  width: 400px;
+  position: relative;
+  cursor: pointer;
+}
+
+.icon {
+  position: absolute;
+  right: 0%;
+  height: 50px;
+  background-color: black;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: 50px;
+  cursor: pointer;
+}
+
+/* THE IP ADDRESS NUMBER INPUT */
+
+#ip-number {
+  width: 400px;
+  height: 50px;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: var(--fontSize--);
+  font-family: "Rubik", sans-serif;
+  font-weight: var(--fontWeight1--);
+  cursor: pointer;
+}
+
+#ip-number::placeholder {
+  font-size: 14px;
+}
+
+#ip-number:focus {
+  outline: none;
+}
+
+.inputs {
+  margin: 1rem 0 1rem 0;
+}
+
+.inputs > h1 {
+  color: white;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* THE RESULT FROM THE API */
+
+.ip-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-around;
+  gap: 25px;
+  position: relative;
+  z-index: 1;
+  top: 20%;
+  max-width: 100%;
+  /* width: 750px; */
+  height: 150px;
+  background-color: white;
+  color: var(---VeryDarkGray--);
+  border-radius: 15px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.inputed-address {
+  padding-right: 1rem;
+  border-right: 1px solid var(---DarkGray--);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  gap: var(--gapSize--);
+}
+
+.location {
+  padding-right: 1rem;
+  border-right: 1px solid var(---DarkGray--);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  gap: var(--gapSize--);
+}
+
+.timezone {
+  padding-right: 1rem;
+  border-right: 1px solid var(---DarkGray--);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  gap: var(--gapSize--);
+}
+
+.isp {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  gap: var(--gapSize--);
+}
+
+/* THE RESULT HEADER */
+
+.inputed-address > p {
+  color: var(---DarkGray--);
+  font-size: 15px;
+  font-weight: var(--fontWeight1--);
+}
+
+.location > p {
+  color: var(---DarkGray--);
+  font-size: 15px;
+  color: var(---DarkGray--);
+}
+
+.timezone > p {
+  color: var(---DarkGray--);
+  font-size: 15px;
+  color: var(---DarkGray--);
+}
+
+.isp > p {
+  color: var(---DarkGray--);
+  font-size: 15px;
+  color: var(---DarkGray--);
+}
+
+/* THE RETURENED RESULT  */
+
+.inputed-address > h3 {
+  font-size: 24px;
+  font-weight: var(--fontWeight2--);
+}
+
+.location > h3 {
+  font-size: 24px;
+  font-weight: var(--fontWeight2--);
+}
+
+.timezone > h3 {
+  font-size: 24px;
+  font-weight: var(--fontWeight2--);
+}
+
+.isp > h3 {
+  font-size: 24px;
+  font-weight: var(--fontWeight2--);
+}
+
+#map {
+  position: absolute;
+  top: 39%;
+  bottom: 0;
+  width: 100%;
+}

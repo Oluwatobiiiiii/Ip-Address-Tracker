@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>IP ADDRESS Locator</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- MAP BOX CSS STYLING -->
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <!-- CSS STYLING -->
+
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <!-- top section -->
+    <section id="ip">
+      <div class="ip-inputs">
+        <!-- the input filed -->
+        <div class="inputs">
+          <h1>IP Address Tracker</h1>
+          <div class="buttonIn">
+            <input
+              name="ip-tracker"
+              id="ip-number"
+              placeholder="Search for any IP address or Domain"
+            />
+            <button class="icon" id="arrow" type="submit">
+              <img src="images/icon-arrow.svg" alt="" />
+            </button>
+          </div>
+        </div>
+
+        <!-- the result from the api -->
+
+        <div class="ip-info">
+          <div class="inputed-address">
+            <p>IP ADDRESS</p>
+            <h3 class="inputed-adress"></h3>
+          </div>
+          <div class="location">
+            <p>LOCATION</p>
+            <h3 class="ip-location"></h3>
+          </div>
+          <div class="timezone">
+            <p>TIMEZONE</p>
+            <h3 class="ip-timezone"></h3>
+          </div>
+          <div class="isp">
+            <p>ISP</p>
+            <h3 class="ip-network"></h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- map -->
+    <section id="show-map">
+      <div id="map"></div>
+    </section>
+
+    <script src="js/app.js" type="module"></script>
+  </body>
+</html>
