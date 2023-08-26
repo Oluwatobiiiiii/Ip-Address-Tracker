@@ -203,7 +203,7 @@ body {
 #map {
   position: absolute;
   top: 39%;
-  bottom: 0;
+  bottom: 3%;
   width: 100%;
 }
 
@@ -225,6 +225,21 @@ a.mapboxgl-ctrl-logo {
 
 .mapboxgl-ctrl-attrib-inner {
   display: none;
+}
+
+.treasure {
+  position: absolute;
+  top: 97%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.me {
+  text-decoration: none;
+  color: black;
+  font-weight: var(--fontWeight1--);
 }
 
 /* MEDIA RESPONSIVITY */
