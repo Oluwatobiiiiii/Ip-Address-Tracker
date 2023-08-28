@@ -22,16 +22,16 @@ const userIP = async function (inp) {
   try {
     //FUNCTION TO SHOW THE RESULT OF THE INPUTED IP ADDRESS
     const ip = await fetch(
-      `https://geo.ipify.org/api/v2/country,city,vpn?apiKey=at_d7PHraagdYPV9IlJEOm1wmQx4gTkQ&ipAddress=${inp}`
+      `http://ip-api.com/json/${inp}?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,offset,currency,isp,org,as,asname,reverse,mobile,proxy,hosting,query`
     );
     const data = await ip.json();
 
     //getting the current ip address of the user
     console.log(data);
-    const myIp = data.ip;
-    const location = data.location.region;
-    const timezone = data.location.timezone;
-    const isp = data.isp;
+    const myIp = data.query;
+    const location = data.city;
+    const timezone = data.timezone;
+    const isp = data.org;
 
     //setting my ip address to show on load
     IpAddress.value = myIp;
@@ -42,7 +42,8 @@ const userIP = async function (inp) {
 
     // FUNCTION TO SHOW THE LOCATION ON THE MAP
 
-    const { lat, lng } = data.location;
+    const lat = data.lat;
+    const lng = data.lon;
     console.log(lat, lng);
     mapboxgl.accessToken =
       "pk.eyJ1IjoiY29kaW5nbmluamEiLCJhIjoiY2xscHRwb2g0MDhhajNsbDBua2o2MGc1aiJ9.5UJt0BwVEq8SsGV9ExOVyw";
