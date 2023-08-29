@@ -22,16 +22,16 @@ const userIP = async function (inp) {
   try {
     //FUNCTION TO SHOW THE RESULT OF THE INPUTED IP ADDRESS
     const ip = await fetch(
-      `http://ip-api.com/json/${inp}?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,offset,currency,isp,org,as,asname,reverse,mobile,proxy,hosting,query`
+      `https://api.ipgeolocation.io/ipgeo?apiKey=8bb5046b979d4e76a86854423f2d7691&ip=${inp}`
     );
     const data = await ip.json();
 
     //getting the current ip address of the user
     console.log(data);
-    const myIp = data.query;
+    const myIp = data.ip;
     const location = data.city;
-    const timezone = data.timezone;
-    const isp = data.org;
+    const timezone = data.time_zone.offset;
+    const isp = data.isp;
 
     //setting my ip address to show on load
     IpAddress.value = myIp;
@@ -42,8 +42,8 @@ const userIP = async function (inp) {
 
     // FUNCTION TO SHOW THE LOCATION ON THE MAP
 
-    const lat = data.lat;
-    const lng = data.lon;
+    const lat = data.latitude;
+    const lng = data.longitude;
     console.log(lat, lng);
     mapboxgl.accessToken =
       "pk.eyJ1IjoiY29kaW5nbmluamEiLCJhIjoiY2xscHRwb2g0MDhhajNsbDBua2o2MGc1aiJ9.5UJt0BwVEq8SsGV9ExOVyw";
